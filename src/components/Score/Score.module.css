@@ -1,0 +1,11 @@
+.Score {
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.container {
+  padding: 10px 0;
+  position: relative;
+  top: 50px;
+}
