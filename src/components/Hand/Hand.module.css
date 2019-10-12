@@ -1,0 +1,21 @@
+.Hand {
+  margin-bottom: 20px;
+  padding: 30px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: flex;
+  flex-wrap: nowrap;
+  margin: auto;
+  height: 200px;
+  width: 300px;
+  flex-direction: row;
+  align-items: center;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 400px) {
+  .Hand {
+    height: 300px;
+    width: auto;
+  }
+}

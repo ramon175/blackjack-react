@@ -1,6 +1,7 @@
 .Card {
   position: relative;
-  float: left;
+  display: inline-block;
+  /* float: left; */
   margin-right: 10px;
   width: 150px;
   height: 220px;
@@ -8,6 +9,7 @@
   background: #fff;
   -webkit-box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3);
   box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3);
+  flex: 0 0 auto;
 }
 
 .Card p {

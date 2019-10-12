@@ -6,47 +6,8 @@
   text-align: center;
 }
 
-.Hit {
-  color: #fff !important;
-  text-transform: uppercase;
-  text-decoration: none;
-  background: #288f3b;
-  padding: 20px 30px;
-  border-radius: 5px;
-  display: inline-block;
-  border: none;
-  transition: all 0.4s ease 0s;
-  margin-right: 10px;
-  cursor: pointer;
-}
-
-.Hit:hover {
-  background: #434343;
-  letter-spacing: 1px;
-  -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
-  -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
-  box-shadow: 5px 40px -10px rgba(0, 0, 0, 0.57);
-  transition: all 0.4s ease 0s;
-}
-
-.Stick {
-  color: #fff !important;
-  text-transform: uppercase;
-  text-decoration: none;
-  background: rgb(207, 74, 74);
-  padding: 20px 30px;
-  border-radius: 5px;
-  display: inline-block;
-  border: none;
-  transition: all 0.4s ease 0s;
-  cursor: pointer;
-}
-
-.Stick:hover {
-  background: #434343;
-  letter-spacing: 1px;
-  -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
-  -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
-  box-shadow: 5px 40px -10px rgba(0, 0, 0, 0.57);
-  transition: all 0.4s ease 0s;
+@media (min-width: 400px) {
+  .GameController {
+    display: flex;
+  }
 }

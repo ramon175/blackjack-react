@@ -1,21 +1,19 @@
 import React from "react";
 
 import classes from "./GameController.module.css";
+import Button from "../UI/Button/Button";
 
 const GameController = props => {
   return (
     <div className={classes.GameController}>
-      <a
-        // disabled={!props.isPlaying}
-        onClick={props.hit}
-        className={classes.Hit}
-      >
-        Hit!
-      </a>
+      <Button
+        clicked={props.hit}
+        label={"Hit!"}
+        active={props.isPlaying}
+        type="hit"
+      ></Button>
 
-      <a onClick={props.stick} className={classes.Stick}>
-        Stick!
-      </a>
+      <Button clicked={props.stick} label="Stick!" type="stick"></Button>
     </div>
   );
 };

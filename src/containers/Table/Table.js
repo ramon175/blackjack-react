@@ -5,6 +5,9 @@ import classes from "./Table.module.css";
 import GameController from "../../components/GameController/GameController";
 import Hand from "../../components/Hand/Hand";
 import Score from "../../components/Score/Score";
+import Modal from "../../components/UI/Modal/Modal";
+import Result from "../../components/Result/Result";
+import Rules from "../../components/Rules/Rules";
 
 //the idea is to have n tables playing the game simultaneously
 const defaultDeck = [
@@ -63,27 +66,34 @@ const defaultDeck = [
 ];
 
 export default class Table extends Component {
-  state = {
-    deck: shuffle(defaultDeck),
-    playerHand: [],
-    dealerHand: [],
-    playerScore: 0,
-    dealerScore: 0,
-    playing: true
+  getInitialState = replay => {
+    const initialState = {
+      deck: shuffle(defaultDeck),
+      playerHand: [],
+      dealerHand: [],
+      playerScore: 0,
+      dealerScore: 0,
+      playing: true,
+      showResult: false,
+      result: "",
+      showRules: replay ? false : true
+    };
+
+    initialState.playerHand.push(initialState.deck.pop());
+    initialState.playerHand.push(initialState.deck.pop());
+
+    initialState.dealerHand.push(initialState.deck.pop());
+
+    if (replay) {
+      initialState.playerScore = this.calculateScore(initialState.playerHand);
+      initialState.dealerScore = this.calculateScore(initialState.dealerHand);
+    }
+    return initialState;
   };
 
-  async componentDidMount() {
-    let initialPlayerHand = [];
-    let initialDealerHand = [];
-    initialPlayerHand.push(this.state.deck.pop());
-    initialPlayerHand.push(this.state.deck.pop());
-    initialDealerHand.push(this.state.deck.pop());
+  state = this.getInitialState();
 
-    await this.setState({
-      playerHand: initialPlayerHand,
-      dealerHand: initialDealerHand
-    });
-
+  componentDidMount() {
     this.setState({ playerScore: this.calculateScore(this.state.playerHand) });
     this.setState({ dealerScore: this.calculateScore(this.state.dealerHand) });
   }
@@ -130,8 +140,12 @@ export default class Table extends Component {
     this.setState({ playerHand: newHand });
     let score = this.calculateScore(this.state.playerHand);
     if (score > 21) {
-      alert("Bust");
-      this.setState({ playing: false, playerScore: score });
+      this.setState({
+        playing: false,
+        playerScore: score,
+        showResult: true,
+        result: "You Lose :("
+      });
     } else {
       this.setState({ playerScore: score });
     }
@@ -151,15 +165,39 @@ export default class Table extends Component {
     }
 
     if (dealerScore > 21) {
-      alert("You Won!");
+      this.setState({ showResult: true, result: "You Win!" });
     } else {
-      alert("You lose :(");
+      this.setState({ showResult: true, result: "You Lose :(" });
     }
+  };
+
+  handleResultClose = () => {
+    this.setState({ showResult: false });
+  };
+
+  handleRulesClose = () => {
+    this.setState({ showRules: false });
+  };
+
+  handlePlayAgain = () => {
+    this.setState(this.getInitialState(true));
   };
 
   render() {
     return (
       <div className={classes.Table}>
+        <Modal show={this.state.showRules} modalClosed={this.handleRulesClose}>
+          <Rules></Rules>
+        </Modal>
+        <Modal
+          show={this.state.showResult}
+          modalClosed={this.handleResultClose}
+        >
+          <Result
+            result={this.state.result}
+            playAgain={this.handlePlayAgain}
+          ></Result>
+        </Modal>
         <Score score={this.state.dealerScore}></Score>
         <Hand hand="Dealer Hand" cards={this.state.dealerHand}></Hand>
         <GameController

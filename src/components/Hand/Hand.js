@@ -1,13 +1,11 @@
 import React from "react";
 import Card from "./Card/Card";
 
+import classes from "./Hand.module.css";
+
 const Hand = props => {
   return (
-    <div>
-      <p style={{ color: "white", textAlign: "center", marginBottom: "35px" }}>
-        {props.hand}
-      </p>
-      {/* <Card number={} suit="spades"></Card> */}
+    <div className={classes.Hand}>
       {props.cards.map(card => {
         return (
           <Card
