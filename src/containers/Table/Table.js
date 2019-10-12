@@ -165,7 +165,7 @@ export default class Table extends Component {
 
     if (dealerScore > 21) {
       this.setState({ showResult: true, result: "You Win!" });
-    } else if (dealerScore == playerScore) {
+    } else if (dealerScore === playerScore) {
       this.setState({ showResult: true, result: "Tie!" });
     } else {
       this.setState({ showResult: true, result: "You Lose!" });
