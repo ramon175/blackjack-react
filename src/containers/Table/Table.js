@@ -161,13 +161,14 @@ export default class Table extends Component {
 
       dealerScore = this.calculateScore(dealerHand);
       this.setState({ dealerScore });
-      console.log(dealerScore);
     }
 
     if (dealerScore > 21) {
       this.setState({ showResult: true, result: "You Win!" });
+    } else if (dealerScore == playerScore) {
+      this.setState({ showResult: true, result: "Tie!" });
     } else {
-      this.setState({ showResult: true, result: "You Lose :(" });
+      this.setState({ showResult: true, result: "You Lose!" });
     }
   };
 
