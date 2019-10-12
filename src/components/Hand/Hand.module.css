@@ -13,7 +13,7 @@
   -webkit-overflow-scrolling: touch;
 }
 
-@media (min-width: 400px) {
+@media (min-width: 600px) {
   .Hand {
     height: 300px;
     width: auto;
