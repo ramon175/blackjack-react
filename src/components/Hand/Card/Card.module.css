@@ -1,10 +1,9 @@
 .Card {
   position: relative;
   display: inline-block;
-  /* float: left; */
   margin-right: 10px;
-  width: 150px;
-  height: 220px;
+  width: 120px;
+  height: 180px;
   border-radius: 10px;
   background: #fff;
   -webkit-box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3);
@@ -14,7 +13,18 @@
 
 .Card p {
   text-align: center;
-  font: 100px/220px Georgia, Times New Roman, serif;
+  font: 80px/170px Georgia, Times New Roman, serif;
+}
+
+@media (min-width: 600px) {
+  .Card {
+    width: 150px;
+    height: 220px;
+  }
+
+  .Card p {
+    font: 100px/220px Georgia, Times New Roman, serif;
+  }
 }
 
 .suitdiamonds:before,
